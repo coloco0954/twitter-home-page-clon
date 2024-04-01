@@ -1,0 +1,65 @@
+---
+interface Props{
+    name: string,
+    perfil: string,
+    username: string,
+    hour: number,
+    post?: string,
+    comments?: string,
+    likes?: string,
+    retweets?: string,
+    interactions?: string,
+    favourites?: string,
+    img_post?: string,
+}
+
+const {
+    name,
+    perfil,
+    username,
+    hour,
+    post,
+    comments,
+    likes,
+    retweets,
+    interactions,
+    favourites,
+    img_post
+} = Astro.props
+---
+
+<div class="h-auto">
+    <div class="w-full h-[1px] bg-zinc-700 mt-1"></div>
+    <div class="flex flex-row">
+        <img src=`/img/profiles/${perfil}` class="w-10 ml-5 mt-3 rounded-full">
+        <h1 class="text-white font-semibold mt-3 ml-2">{name}</h1>
+        <div class="mt-[13px] ml-1 text-[16px] flex">
+            <p class="text-zinc-500">@{username} * <span class="text-zinc-500">{hour}h</span></p>
+            <div class="flex-grow"></div>
+            <img src="/img/src/points.svg" class="w-5 ml-10 -mt-[13px]">
+        </div>
+    </div>
+    <div class="ml-10 mr-7 pl-[28px] -mt-4">
+        <p class="text-white text-[15px] ">{post}</p>
+        <img
+  src={`/img/posts/${img_post}`}
+  class="rounded-xl mt-3"
+  alt={img_post && img_post.trim() !== '' ? 'Descripción de la imagen' : ''}
+/>
+    </div>
+    
+    <div class="ml-[70px] mt-1 flex flex-row">
+        <img src="/img/src/comment.svg" class="w-5 transform scale-x-[-1]">
+        <span class="text-zinc-500 text-[13px] mt-[7px] ml-1">{comments}</span>
+        <img src="/img/src/retweet.svg" class="w-6 ml-5">
+        <span class="text-zinc-500 text-[13px] mt-[7px] ml-1">{retweets}</span>
+        <img src="/img/src/heart.svg" class="w-5 ml-5">
+        <span class="text-zinc-500 text-[13px] mt-[7px] ml-1">{likes}</span>
+        <img src='/img/src/status.svg' class="w-5 ml-5">
+        <span class="text-zinc-500 text-[13px] mt-[7px] ml-1">{interactions}</span>
+        <img src="/img/src/flag.svg" class="w-5 ml-8">
+        <span class="text-zinc-500 text-[13px] mt-[7px] ml-1">{favourites}</span>
+        <img src="/img/src/upload.svg" class="w-5 ml-3">
+        
+    </div>
+</div>
