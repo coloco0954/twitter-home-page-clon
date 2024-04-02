@@ -53,15 +53,19 @@ import AsideRight from './MenuRight.astro';
 </div>
 
 <script>
-    const inputTweet = document.querySelector('#input-tweet');
-    const buttonPublic = document.querySelector('#button-public');
-    inputTweet?.addEventListener('keyup', function(){
+    const inputTweet = document.querySelector<HTMLInputElement>('#input-tweet');
+    const buttonPublic = document.querySelector<HTMLButtonElement>('#button-public');
+
+    inputTweet?.addEventListener('keyup', function() {
         const valueInput = inputTweet.value;
-        const lengthalue = valueInput.length;
-        if(lengthalue >= 1){
-            buttonPublic.disabled = false;
+        const lengthValue = valueInput.length;
+
+        if (lengthValue >= 1) {
+            buttonPublic?.removeAttribute('disabled'); // Habilita el botón
         } else {
-            buttonPublic.disabled = true;
+            buttonPublic?.setAttribute('disabled', 'true'); // Deshabilita el botón
         }
-    })
+    });
+
+
 </script>
