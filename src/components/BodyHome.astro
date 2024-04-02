@@ -1,12 +1,67 @@
 ---
 import Tweet from '../components/Tweet.astro';
+import AsideLeft from './MenuLeft.astro';
+import AsideRight from './MenuRight.astro';
 ---
 
-<div class="mt-[115px] mb-1">
-    
-        <Tweet perfil='william.png' name="William Blogs" username='blogs_william' post ="Hoy como es jueves santo, haré un render de la ultima cena (serán 12 users) asi que lo mandán a este tweet Ojo: los 12 primeros serán escogidos. Suerte!!!" hour={6} comments="1" retweets="2" likes="14" interactions="30"/>
-        <Tweet perfil='gene.jpg' name="`. 𝐆𝐞𝐧 🍭 . ‹𝟥" username='GeneGatitadeAni' post ="Amix conseguí el libro 🫶🏻🩵 Y sin q mi mamá viera el título (No quiero q me haga preguntas)" hour={9} likes="4" interactions="68" img_post='gene-libro.jpeg'/>
+<div class="mt-[115px] md:mt-0 mb-1 md:grid md:grid-cols-12 md:w-full">
+    <div class="md:col-span-3 md:flex hidden">
+        <div class="flex-grow"></div>
+        <div class="hidden md:w-[1px] md:bg-zinc-700 md:h-full md:block md:right-0"></div>
+        <AsideLeft/>
+    </div>
+    <div class="md:col-span-6">
+        <div class="md:flex justify-between gap-[130px] ml-36 mr-3 hidden my-4">
+            <div>
+                <a href="" class="text-white font-semibold">Para ti</a>
+                <div class="bg-sky-500 w-[60px] -ml-[5px] mt-2 h-1 rounded-full -mb-[16px]"></div>
+            </div>
+            <div>
+                <a href="" class="text-zinc-500">Siguiendo</a>
+                <div class="bg-sky-500 w-[80px] -ml-[5px] mt-2 h-1 rounded-full -mb-[16px] opacity-0"></div>
+            </div>
+            <div>
+                <img src="/img/src/settings.svg" alt="" class="w-5">
+            </div>
+        </div>
+        <div class="w-full h-[1px] bg-zinc-700"></div>
+        <div class="flex flex-row h-auto w-full ml-3 mt-4 mr-3">
+            <img src="/img/profiles/coloco.jpg" class="w-10 rounded-full">
+            <input type="text" name="" id="input-tweet" placeholder="¡¿Qué está pasando?!" class= "w-[600px] ml-3 -mt-2 bg-transparent placeholder:text-zinc-500 text-[22px] text-white focus:outline-none">
+            
+        </div>
+        <div class="flex flex-row mb-5">
+            <img src="/img/src/image.svg" class="w-5 ml-16 mt-5">
+            <img src="/img/src/gif.svg" class="w-5 ml-4 mt-5">
+            <img src="/img/src/list.svg" class="w-5 ml-4 mt-5">
+            <img src="/img/src/smile.svg" class="w-5 ml-4 mt-5">
+            <img src="/img/src/calendar.svg" class="w-5 ml-4 mt-5">
+            <img src="/img/src/map.svg" class="w-5 ml-4 mt-5">
+            <div class="flex-grow"></div>
+            <button id="button-public" class="text-white font-semibold bg-sky-500 rounded-full h-10 w-24  mr-2 mt-2 disabled:bg-sky-900 disabled:text-zinc-400" disabled>Postear</button>
+        </div>
+        <Tweet perfil='william.png' name="William Blogs" username='blogs_william' post="Hoy como es jueves santo, haré un render de la ultima cena (serán 12 users) asi que lo mandán a este tweet Ojo: los 12 primeros serán escogidos. Suerte!!!" hour={6} comments="1" retweets="2" likes="14" interactions="30"/>
+        <Tweet perfil='gene.jpg' name="`. 𝐆𝐞𝐧 🍭 . ‹𝟥" username='GeneGatitadeAni' post="Amix conseguí el libro 🫶🏻🩵 Y sin q mi mamá viera el título (No quiero q me haga preguntas)" hour={9} likes="4" interactions="68" img_post='gene-libro.jpeg'/>
         <Tweet perfil='yami.jpg' name='🖤yami🖤' username='byYamiii' post="En serio que nunca entienden" hour={2} img_post='meme-hombres.jpeg' comments="892" retweets="1k" likes="45k" interactions='5M'/>
         <Tweet perfil='lucho.jpg' name='Lucho Portuano' username='SrLuchoPortuano' img_post='meme-jerry-dan.jpeg' comments='161' retweets='5 mil' likes='74 mil' interactions='1M' hour={6}/>
         <Tweet perfil='condor.jpg' name='El condor' username='CondorPana' post="Calamardo reacciona mejor que Elsa xD" hour={8} comments='71' retweets='940' likes='16 mil' interactions='163 mil' img_post='meme-calamardo.jpeg'/>
+    </div>
+    <div class="md:col-span-3 hidden md:block">
+        <div class="hidden md:w-[1px] md:bg-zinc-700 md:h-full md:block md:right-0"></div>
+        <AsideRight/>
+    </div>
 </div>
+
+<script>
+    const inputTweet = document.querySelector('#input-tweet');
+    const buttonPublic = document.querySelector('#button-public');
+    inputTweet?.addEventListener('keyup', function(){
+        const valueInput = inputTweet.value;
+        const lengthalue = valueInput.length;
+        if(lengthalue >= 1){
+            buttonPublic.disabled = false;
+        } else {
+            buttonPublic.disabled = true;
+        }
+    })
+</script>
