@@ -1,0 +1,19 @@
+---
+interface Props{
+    topic: string,
+    content: string,
+    posts?: string
+}
+
+const {topic, content, posts} = Astro.props;
+---
+
+<div class="px-5 py-3">
+    <p class="text-[15px] text-zinc-600">{topic} · Tendencia</p>
+    <p class="font-bold text-white">{content}</p>
+    <p class="text-[15px] text-zinc-600">{posts} posts</p>
+    <div class="flex">
+        <div class="flex-grow"></div>
+        <img src="/img/src/points.svg" class="w-5 -mt-28">
+    </div>
+</div>
